@@ -2,7 +2,6 @@ import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
 import Head from "next/head";
 import HeroSection from "@/components/home/HeroSection";
-import JobOfferItem from "@/components/common/JobOfferItem";
 import LatestJobsSection from "@/components/home/LatestJobsSection";
 
 const Home = () => {
