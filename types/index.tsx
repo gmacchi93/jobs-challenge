@@ -6,8 +6,8 @@ export interface Job {
   active: boolean;
   company: string;
   ratePerHour: number;
-  tools: Array<string | null>;
-  disciplines: Array<string | null>;
+  tools: Array<string>;
+  disciplines: Array<string>;
   jobDesription: string;
   jobType: string;
   location: string;

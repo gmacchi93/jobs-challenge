@@ -17,7 +17,7 @@ const SearchPage = () => {
               <ul className="w-full flex flex-col gap-4">
                 <JobOfferItem
                   job={{
-                    jobId: "uuid",
+                    jobId: "uuid1",
                     name: "Game designer",
                     offerStartDate: "2022-12-01T12:00:00.000Z",
                     offerEndDate: "2023-02-01T12:00:00.000Z",
@@ -33,7 +33,7 @@ const SearchPage = () => {
                 />
                 <JobOfferItem
                   job={{
-                    jobId: "uuid",
+                    jobId: "uuid2",
                     name: "Game designer",
                     offerStartDate: "2022-12-01T12:00:00.000Z",
                     offerEndDate: "2023-02-01T12:00:00.000Z",

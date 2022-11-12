@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components { 
+    input, a, button {
+        @apply focus:outline-purple-500
+    }
+}

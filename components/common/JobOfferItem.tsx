@@ -7,6 +7,7 @@ import {
   faMoneyCheckDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React from "react";
 import { Job } from "types";
 import Badge from "./Badge";
@@ -55,12 +56,12 @@ const JobOfferItem = ({
                   ))}
                 </ul>
               </div>
-              <a
+              <Link
                 href={`/job/${jobId}`}
                 className="text-purple-500 font-semibold"
               >
                 See more <FontAwesomeIcon icon={faArrowRight} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

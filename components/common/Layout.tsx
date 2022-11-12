@@ -3,16 +3,17 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode,
+  className?: string,
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, className }: Props) => {
   return (
-    <div>
+    <div className={className ? className : ""}>
       <header>
         <Navbar />
       </header>
-      <div className="container mx-auto">{children}</div>
+      <div className={className !== undefined ? className : "container mx-auto"}>{children}</div>
       <Footer />
     </div>
   );
