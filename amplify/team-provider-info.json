@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jobschallenge-dev-112351-authRole",
+      "UnauthRoleArn": "arn:aws:iam::648772917181:role/amplify-jobschallenge-dev-112351-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::648772917181:role/amplify-jobschallenge-dev-112351-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-jobschallenge-dev-112351-deployment",
+      "UnauthRoleName": "amplify-jobschallenge-dev-112351-unauthRole",
+      "StackName": "amplify-jobschallenge-dev-112351",
+      "StackId": "arn:aws:cloudformation:us-east-1:648772917181:stack/amplify-jobschallenge-dev-112351/a346f8e0-6295-11ed-a365-0ef1395c223d",
+      "AmplifyAppId": "d25i7i7ujsrzy2"
+    }
+  }
+}
