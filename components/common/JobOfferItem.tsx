@@ -41,7 +41,7 @@ const JobOfferItem = ({
             />
             <Badge>{jobType}</Badge>
           </div>
-          <div className="px-5 py-2 bg-neutral-200">
+          <div className="px-5 py-2 bg-neutral-100">
             <div className="flex flex-row gap-8 items-center">
               <div className="flex-1 flex flex-col md:flex-row flex-wrap md:gap-3">
                 <h4>Tools:</h4>
@@ -59,7 +59,7 @@ const JobOfferItem = ({
               <div className="flex-shrink-0">
                 <Link
                   href={`/job/${jobId}`}
-                  className="text-purple-500 font-semibold"
+                  className="text-purple-600 font-semibold"
                 >
                   See more <FontAwesomeIcon icon={faArrowRight} />
                 </Link>

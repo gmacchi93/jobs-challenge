@@ -1,5 +1,7 @@
 
+import { actionTypes } from "./actions";
 import { TableJobsFilterInput } from "./API";
+import { statusTypes } from "./status";
 
 export interface Job {
   jobId: string;
@@ -26,8 +28,13 @@ export interface JobsState {
   resultsJobs: JobState;
 }
 
+export interface StatusState {
+  [key: string]: statusTypes 
+}
+
 export interface AppState {
   jobs: JobsState;
+  status: StatusState;
 }
 
 export interface ListJobsItems {

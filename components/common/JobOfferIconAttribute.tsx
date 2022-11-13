@@ -14,7 +14,7 @@ const JobOfferIconAttribute = ({ icon, ariaLabel, attribute }: Props) => {
       <FontAwesomeIcon
         aria-hidden={false}
         aria-label={ariaLabel}
-        className="text-purple-500"
+        className="text-purple-600"
         icon={icon}
       />
       {attribute}

@@ -4,11 +4,14 @@ type Props = {
   name: string,
   label: string,
   type: HTMLInputTypeAttribute,
-  onChange: ChangeEventHandler,
+  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  onBlur?: React.FocusEventHandler<HTMLInputElement>,
   required?: boolean,
+  value: string | number
+  error?: string
 };
 
-const FormGroup = ({ name, label, type, onChange, required = false }: Props) => {
+const FormGroup = ({ name, label, type, onChange, onBlur, required = false, value, error }: Props) => {
   return (
     <div>
       <label
@@ -23,8 +26,11 @@ const FormGroup = ({ name, label, type, onChange, required = false }: Props) => 
         id={name}
         name={name}
         onChange={onChange}
+        onBlur={onBlur}
         required={required}
+        value={value}
       />
+      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 };

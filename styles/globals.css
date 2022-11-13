@@ -4,6 +4,6 @@
 
 @layer components { 
     input, a, button {
-        @apply focus:outline-purple-500
+        @apply focus:outline-purple-600
     }
 }

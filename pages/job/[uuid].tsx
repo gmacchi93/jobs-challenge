@@ -6,6 +6,7 @@ import InfoSection from "@/components/detail/InfoSection";
 import ApplicationForm from "@/components/detail/ApplicationForm";
 import JobsController from "controllers/JobsController";
 import { listJobIds } from "grapql/queries";
+import Head from "next/head";
 
 export const getStaticProps: GetStaticProps<{ job: Job }> = async (context) => {
   const { params: { uuid = "" } = {} } = context;
@@ -19,12 +20,19 @@ const DetailPage = ({
   job,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Layout className="">
-      <main>
-        <InfoSection job={job} />
-        <ApplicationForm job={job} />
-      </main>
-    </Layout>
+    <>
+      <Head>
+        <title>Apply | {job.name}</title>
+        <meta name="description" content={job.jobDesription} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout className="">
+        <main>
+          <InfoSection job={job} />
+          <ApplicationForm job={job} />
+        </main>
+      </Layout>
+    </>
   );
 };
 

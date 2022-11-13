@@ -9,7 +9,7 @@ type Props = {
 const JobAttribute = ({attribute, label}: Props) => {
   return (
     <div>
-      <h4 className="font-bold">{`${label}:`}</h4>
+      <p className="font-bold">{`${label}:`}</p>
       {Array.isArray(attribute) ? <AttributeList values={attribute} /> : <p>{`${attribute}`}</p>}
     </div>
   );

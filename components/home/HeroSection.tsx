@@ -12,7 +12,7 @@ const HeroSection = (props: Props) => {
         <div className="flex flex-col gap-6">
           <h1 className="text-5xl font-semibold text-neutral-800">
             Find your dream jobs with{" "}
-            <em className="text-purple-500">JobsApp</em>
+            <em className="text-purple-600">JobsApp</em>
           </h1>
           <p className="text-neutral-600">
             Join the top skilled video games professional community, to

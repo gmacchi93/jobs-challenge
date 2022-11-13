@@ -1,7 +1,9 @@
+import React from "react";
+import moment from "moment";
+import * as Yup from "yup";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import moment from "moment";
-import React from "react";
+import { FormikConfig, useFormik } from "formik";
 import { Job } from "types";
 import FormGroup from "../common/FormGroup";
 
@@ -9,11 +11,48 @@ type Props = {
   job: Job;
 };
 
+interface ApplicationValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  linkedInUrl: string;
+}
+
 const FEW_DAYS_TO_CLOSE = 15;
 
 const ApplicationForm = ({ job: { offerEndDate } }: Props) => {
   const daysToClose = moment(offerEndDate).diff(moment(), "days");
   const showAlert = daysToClose > 0 && daysToClose < FEW_DAYS_TO_CLOSE;
+
+  const ApplicationSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    lastName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    linkedInUrl: Yup.string().url("Invalid URL").matches(/^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/, "Invalid LinkedIn URL").required("Required"),
+  });
+
+  const formikConfig: FormikConfig<ApplicationValues> = {
+    validationSchema: ApplicationSchema,
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      linkedInUrl: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  };
+
+  const {values, errors, touched, handleChange, handleBlur} = useFormik(formikConfig);
+  console.log(values);
+  console.log(errors);
 
   return (
     <section>
@@ -37,31 +76,43 @@ const ApplicationForm = ({ job: { offerEndDate } }: Props) => {
                   name="firstName"
                   label="First Name"
                   required
-                  onChange={() => {}}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.firstName}
+                  error={touched.firstName ? errors.firstName : ''}
                 />
                 <FormGroup
                   type="text"
                   name="lastName"
                   label="Last Name"
                   required
-                  onChange={() => {}}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.lastName}
+                  error={touched.lastName ? errors.lastName : ''}
                 />
                 <FormGroup
                   type="text"
                   name="email"
                   label="Email"
                   required
-                  onChange={() => {}}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  error={touched.email ? errors.email : ''}
                 />
                 <FormGroup
                   type="text"
-                  name="linkedin"
+                  name="linkedInUrl"
                   label="LinkedIn profile url"
                   required
-                  onChange={() => {}}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.linkedInUrl}
+                  error={touched.linkedInUrl ? errors.linkedInUrl : ''}
                 />
                 <input
-                  className="px-3 py-2 bg-purple-500 rounded-md text-white font-semibold"
+                  className="px-3 py-2 bg-purple-600 rounded-md text-white font-semibold"
                   type="submit"
                   value="Submit"
                 />

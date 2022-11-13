@@ -1,8 +1,9 @@
 import { actionTypes, FetchJobsSuccess, Job, ListJobsItems } from "types";
 
 // FETCH_JOBS
-export const fetchJobs = () => ({
+export const fetchJobs = (filters?:any) => ({
   type: actionTypes.FETCH_JOBS,
+  filters
 });
 
 export const fetchJobsRequest = () => ({

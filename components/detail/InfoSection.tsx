@@ -26,16 +26,16 @@ const InfoSection = ({
         <h1 className="text-5xl">{name}</h1>
         <JobAttribute label="Description" attribute={jobDesription} />
         <div className="flex flex-row flex-wrap gap-8">
-          <div className="border border-purple-500 rounded-md p-5">
+          <div className="border border-purple-600 rounded-md p-5">
             <JobAttribute label="Company" attribute={company} />
           </div>
-          <div className="border border-purple-500 rounded-md p-5">
+          <div className="border border-purple-600 rounded-md p-5">
             <JobAttribute label="Location" attribute={location} />
           </div>
-          <div className="border border-purple-500 rounded-md p-5">
+          <div className="border border-purple-600 rounded-md p-5">
             <JobAttribute label="Rate per hour" attribute={ratePerHour} />
           </div>
-          <div className="border border-purple-500 rounded-md p-5">
+          <div className="border border-purple-600 rounded-md p-5">
             <JobAttribute label="Job Type" attribute={jobType} />
           </div>
         </div>
