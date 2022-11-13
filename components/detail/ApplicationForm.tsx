@@ -17,7 +17,7 @@ const ApplicationForm = ({ job: { offerEndDate } }: Props) => {
 
   return (
     <section>
-      <div className="py-12 bg-purple-100">
+      <div className="py-12 bg-purple-100 px-5 md:px-0">
         <div className="container mx-auto">
           <div className="flex flex-col items-center">
             <h2 className="text-3xl text-center">

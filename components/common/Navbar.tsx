@@ -8,22 +8,21 @@ type Props = {};
 const Navbar = (props: Props) => {
   return (
     <nav>
-      <div className="container mx-auto py-3">
-      <Link href="/">
-        <div className="flex flex-row items-center gap-4">
-          <Image
-            className="flex"
-            width={50}
-            height={50}
-            src={logo}
-            alt="JobsApp's Logo"
-            loading="lazy"
-          />
-          <span className="flex text-3xl text-neutral-700">JobsApp</span>
-        </div>
-      </Link>
+      <div className="container mx-auto py-3 px-5 md:px-0">
+        <Link href="/">
+          <div className="flex flex-row items-center gap-4">
+            <Image
+              className="flex"
+              width={50}
+              height={50}
+              src={logo}
+              alt="JobsApp's Logo"
+              loading="lazy"
+            />
+            <span className="flex text-3xl text-neutral-700">JobsApp</span>
+          </div>
+        </Link>
       </div>
-      
     </nav>
   );
 };

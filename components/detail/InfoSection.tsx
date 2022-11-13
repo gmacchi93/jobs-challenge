@@ -22,7 +22,7 @@ const InfoSection = ({
 }: Props) => {
   return (
     <section>
-      <div className="container mx-auto flex flex-col gap-4 py-12">
+      <div className="container mx-auto flex flex-col gap-4 py-12 px-5 md:px-0">
         <h1 className="text-5xl">{name}</h1>
         <JobAttribute label="Description" attribute={jobDesription} />
         <div className="flex flex-row flex-wrap gap-8">

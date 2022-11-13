@@ -1,14 +1,11 @@
 import React from "react";
-import moment from "moment";
-import FormGroup from "@/components/common/FormGroup";
 import Layout from "@/components/common/Layout";
-import JobAttribute from "@/components/detail/JobAttribute";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { Job } from "types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { FetchJobsVariables, Job } from "types";
 import InfoSection from "@/components/detail/InfoSection";
 import ApplicationForm from "@/components/detail/ApplicationForm";
+import JobsController from "controllers/JobsController";
+import { listJobIds } from "lib/graphql/queries";
 
 export const getStaticProps: GetStaticProps<{ job: Job }> = async (context) => {
   return {
@@ -31,9 +28,9 @@ export const getStaticProps: GetStaticProps<{ job: Job }> = async (context) => {
   };
 };
 
-const DetailPage = ({job}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  
-
+const DetailPage = ({
+  job,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout className="">
       <main>
@@ -45,8 +42,37 @@ const DetailPage = ({job}: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  let allJobs: Array<string | { params: {}; locale?: string }> = [];
+  const variables: FetchJobsVariables = { limit: 100 };
+  try {
+    do {
+      const { listJobs } = await JobsController.fetchJobs(
+        variables,
+        listJobIds
+      );
+      const newPaths = listJobs.items.map((job) => ({
+        params: { uuid: job.jobId },
+      }));
+
+      allJobs = [...allJobs, ...newPaths];
+
+      if (listJobs.nextToken === null) {
+        break;
+      } else {
+        variables.nextToken = listJobs.nextToken;
+      }
+    } while (true);
+
+    return {
+      paths: allJobs,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+
   return {
-    paths: [{ params: { uuid: "uuid1" } }, { params: { uuid: "uuid2" } }],
+    paths: [],
     fallback: false,
   };
 };

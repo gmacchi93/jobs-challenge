@@ -45,3 +45,18 @@ export const listJobs = /* GraphQL */ `
     }
   }
 `;
+
+export const listJobIds = /* GraphQL */ `
+  query ListJobs(
+    $filter: TableJobsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        jobId
+      }
+      nextToken
+    }
+  }
+`;

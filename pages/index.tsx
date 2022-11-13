@@ -3,8 +3,12 @@ import Navbar from "@/components/common/Navbar";
 import Head from "next/head";
 import HeroSection from "@/components/home/HeroSection";
 import LatestJobsSection from "@/components/home/LatestJobsSection";
+import useMountEffect from "hooks/useMountEffect";
 
 const Home = () => {
+  useMountEffect(() => {
+    console.log("mounted home")
+  })
   return (
     <>
       <Head>
