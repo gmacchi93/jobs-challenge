@@ -5,8 +5,8 @@
 export type CreateJobsInput = {
   jobId: string,
   offerStartDate: string,
-  name: string,
   offerEndDate: string,
+  name: string,
   active: boolean,
   company: string,
   ratePerHour: number,
@@ -21,8 +21,8 @@ export type Jobs = {
   __typename: "Jobs",
   jobId: string,
   offerStartDate: string,
-  name: string,
   offerEndDate: string,
+  name: string,
   active: boolean,
   company: string,
   ratePerHour: number,
@@ -35,9 +35,9 @@ export type Jobs = {
 
 export type UpdateJobsInput = {
   jobId: string,
-  offerStartDate: string,
-  name?: string | null,
+  offerStartDate?: string | null,
   offerEndDate?: string | null,
+  name?: string | null,
   active?: boolean | null,
   company?: string | null,
   ratePerHour?: number | null,
@@ -50,14 +50,13 @@ export type UpdateJobsInput = {
 
 export type DeleteJobsInput = {
   jobId: string,
-  offerStartDate: string,
 };
 
 export type TableJobsFilterInput = {
   jobId?: TableStringFilterInput | null,
   offerStartDate?: TableStringFilterInput | null,
-  name?: TableStringFilterInput | null,
   offerEndDate?: TableStringFilterInput | null,
+  name?: TableStringFilterInput | null,
   active?: TableBooleanFilterInput | null,
   company?: TableStringFilterInput | null,
   ratePerHour?: TableFloatFilterInput | null,
@@ -113,8 +112,8 @@ export type CreateJobsMutation = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -135,8 +134,8 @@ export type UpdateJobsMutation = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -157,8 +156,8 @@ export type DeleteJobsMutation = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -172,7 +171,6 @@ export type DeleteJobsMutation = {
 
 export type GetJobsQueryVariables = {
   jobId: string,
-  offerStartDate: string,
 };
 
 export type GetJobsQuery = {
@@ -180,8 +178,8 @@ export type GetJobsQuery = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -206,8 +204,8 @@ export type ListJobsQuery = {
       __typename: "Jobs",
       jobId: string,
       offerStartDate: string,
-      name: string,
       offerEndDate: string,
+      name: string,
       active: boolean,
       company: string,
       ratePerHour: number,
@@ -224,8 +222,8 @@ export type ListJobsQuery = {
 export type OnCreateJobsSubscriptionVariables = {
   jobId?: string | null,
   offerStartDate?: string | null,
-  name?: string | null,
   offerEndDate?: string | null,
+  name?: string | null,
   active?: boolean | null,
 };
 
@@ -234,8 +232,8 @@ export type OnCreateJobsSubscription = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -250,8 +248,8 @@ export type OnCreateJobsSubscription = {
 export type OnUpdateJobsSubscriptionVariables = {
   jobId?: string | null,
   offerStartDate?: string | null,
-  name?: string | null,
   offerEndDate?: string | null,
+  name?: string | null,
   active?: boolean | null,
 };
 
@@ -260,8 +258,8 @@ export type OnUpdateJobsSubscription = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,
@@ -276,8 +274,8 @@ export type OnUpdateJobsSubscription = {
 export type OnDeleteJobsSubscriptionVariables = {
   jobId?: string | null,
   offerStartDate?: string | null,
-  name?: string | null,
   offerEndDate?: string | null,
+  name?: string | null,
   active?: boolean | null,
 };
 
@@ -286,8 +284,8 @@ export type OnDeleteJobsSubscription = {
     __typename: "Jobs",
     jobId: string,
     offerStartDate: string,
-    name: string,
     offerEndDate: string,
+    name: string,
     active: boolean,
     company: string,
     ratePerHour: number,

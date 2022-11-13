@@ -6,21 +6,21 @@ export const onCreateJobs = /* GraphQL */ `
   subscription OnCreateJobs(
     $jobId: String
     $offerStartDate: AWSDateTime
-    $name: String
     $offerEndDate: AWSDateTime
+    $name: String
     $active: Boolean
   ) {
     onCreateJobs(
       jobId: $jobId
       offerStartDate: $offerStartDate
-      name: $name
       offerEndDate: $offerEndDate
+      name: $name
       active: $active
     ) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour
@@ -36,21 +36,21 @@ export const onUpdateJobs = /* GraphQL */ `
   subscription OnUpdateJobs(
     $jobId: String
     $offerStartDate: AWSDateTime
-    $name: String
     $offerEndDate: AWSDateTime
+    $name: String
     $active: Boolean
   ) {
     onUpdateJobs(
       jobId: $jobId
       offerStartDate: $offerStartDate
-      name: $name
       offerEndDate: $offerEndDate
+      name: $name
       active: $active
     ) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour
@@ -66,21 +66,21 @@ export const onDeleteJobs = /* GraphQL */ `
   subscription OnDeleteJobs(
     $jobId: String
     $offerStartDate: AWSDateTime
-    $name: String
     $offerEndDate: AWSDateTime
+    $name: String
     $active: Boolean
   ) {
     onDeleteJobs(
       jobId: $jobId
       offerStartDate: $offerStartDate
-      name: $name
       offerEndDate: $offerEndDate
+      name: $name
       active: $active
     ) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour

@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import awsExports from "../lib/aws-exports";
+import awsExports from "src/aws-exports";
 import { Amplify } from 'aws-amplify';
 import { Provider } from "react-redux";
 import { config } from '@fortawesome/fontawesome-svg-core'

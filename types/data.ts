@@ -1,5 +1,5 @@
 
-import { TableJobsFilterInput } from "../lib/API";
+import { TableJobsFilterInput } from "./API";
 
 export interface Job {
   jobId: string;
@@ -37,12 +37,24 @@ export interface ListJobsItems {
   },
 }
 
+export interface GetJobsItems {
+  getJobs: Job,
+}
+
 export interface ListJobsGraphQL {
   data: ListJobsItems;
+}
+
+export interface GetJobsGraphQL {
+  data: GetJobsItems;
 }
 
 export interface FetchJobsVariables {
   limit?: number,
   filter?: TableJobsFilterInput,
   nextToken?: string,
+};
+
+export interface GetJobVariables {
+  jobId: string,
 };

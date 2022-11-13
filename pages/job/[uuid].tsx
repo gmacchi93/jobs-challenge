@@ -5,27 +5,14 @@ import { FetchJobsVariables, Job } from "types";
 import InfoSection from "@/components/detail/InfoSection";
 import ApplicationForm from "@/components/detail/ApplicationForm";
 import JobsController from "controllers/JobsController";
-import { listJobIds } from "lib/graphql/queries";
+import { listJobIds } from "grapql/queries";
 
 export const getStaticProps: GetStaticProps<{ job: Job }> = async (context) => {
-  return {
-    props: {
-      job: {
-        jobId: "uuid",
-        name: "Game designer",
-        offerStartDate: "2022-12-01T12:00:00.000Z",
-        offerEndDate: "2023-02-01T12:00:00.000Z",
-        active: true,
-        company: "Acme Company",
-        ratePerHour: 20,
-        tools: ["Unity", "3DMax"],
-        disciplines: ["Game Design"],
-        jobDesription: "Game design with Unity and 3DMax",
-        jobType: "Remote",
-        location: "Argentina, Buenos Aires",
-      },
-    },
-  };
+  const { params: { uuid = "" } = {} } = context;
+  const { getJobs: job } = await JobsController.getJob({
+    jobId: uuid as string,
+  });
+  return { props: { job } };
 };
 
 const DetailPage = ({

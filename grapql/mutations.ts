@@ -7,8 +7,8 @@ export const createJobs = /* GraphQL */ `
     createJobs(input: $input) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour
@@ -25,8 +25,8 @@ export const updateJobs = /* GraphQL */ `
     updateJobs(input: $input) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour
@@ -43,8 +43,8 @@ export const deleteJobs = /* GraphQL */ `
     deleteJobs(input: $input) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour

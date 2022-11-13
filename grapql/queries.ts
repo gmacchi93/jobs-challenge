@@ -3,12 +3,12 @@
 // this is an auto generated file. This will be overwritten
 
 export const getJobs = /* GraphQL */ `
-  query GetJobs($jobId: String!, $offerStartDate: AWSDateTime!) {
-    getJobs(jobId: $jobId, offerStartDate: $offerStartDate) {
+  query GetJobs($jobId: String!) {
+    getJobs(jobId: $jobId) {
       jobId
       offerStartDate
-      name
       offerEndDate
+      name
       active
       company
       ratePerHour
@@ -30,8 +30,8 @@ export const listJobs = /* GraphQL */ `
       items {
         jobId
         offerStartDate
-        name
         offerEndDate
+        name
         active
         company
         ratePerHour
