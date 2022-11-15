@@ -6,4 +6,39 @@
     input, a, button {
         @apply focus:outline-purple-600
     }
+
+    /* custom checkbox */
+    input[type="checkbox"] {
+        @apply appearance-none m-0 text-current w-[1.15em] h-[1.15em] border border-purple-500 rounded-sm transform -translate-y-[0.075em] grid place-content-center
+    }
+
+    input[type="checkbox"]::before {
+        @apply w-[0.65em] h-[0.65em] transform scale-0 transition-transform shadow bg-purple-600
+    }
+
+    input[type="checkbox"]::before {
+        content: ""
+    }
+    
+    input[type="checkbox"]:checked::before {
+        @apply scale-100
+    }
+
+    /* custom radio */
+    input[type="radio"] {
+        @apply appearance-none m-0 text-current w-[1.15em] h-[1.15em] rounded-full border border-purple-500 transform -translate-y-[0.075em] grid place-content-center
+    }
+
+    input[type="radio"]::before {
+        @apply w-[0.65em] h-[0.65em] rounded-full transform scale-0 transition-transform shadow bg-purple-600
+    }
+
+    input[type="radio"]::before {
+        content: ""
+    }
+    
+    input[type="radio"]:checked::before {
+        @apply scale-100
+    }
+
 }

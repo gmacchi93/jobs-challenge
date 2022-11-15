@@ -8,14 +8,14 @@ type Props = {
   onBlur?: React.FocusEventHandler<HTMLInputElement>,
   required?: boolean,
   value: string | number
-  error?: string
+  error?: string | string[] | undefined
 };
 
 const FormGroup = ({ name, label, type, onChange, onBlur, required = false, value, error }: Props) => {
   return (
     <div>
       <label
-        className="block font-medium text-neutral-700"
+        className="block font-bold text-neutral-700"
         htmlFor={name}
       >
         {`${label}${required ? '*' : ''}:`}
@@ -30,7 +30,7 @@ const FormGroup = ({ name, label, type, onChange, onBlur, required = false, valu
         required={required}
         value={value}
       />
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-500">{Array.isArray(error) ? error[0] : error}</p>}
     </div>
   );
 };

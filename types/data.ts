@@ -1,7 +1,24 @@
-
 import { actionTypes } from "./actions";
 import { TableJobsFilterInput } from "./API";
 import { statusTypes } from "./status";
+
+export enum JobTypes {
+  ONSITE = "On-Site",
+  REMOTE = "Remote",
+  HYBRID = "Hybrid",
+}
+
+export enum Disciplines {
+  ANIMATION = "Animation",
+  ART = "Art",
+  AUDIO = "Audio",
+  ECONOMY = "Economy",
+  ENGINEERING = "Engineering",
+  GAME_DESIGN = "Game Design",
+  UXUI_DESIGN = "UXUI Design",
+}
+
+export type JobField = 'jobId' | 'offerStartDate' | 'name' | 'offerEndDate' | 'active' | 'company' | 'ratePerHour' | 'tools' | 'disciplines' | 'jobDesription' | 'jobType' | 'location';
 
 export interface Job {
   jobId: string;
@@ -12,15 +29,15 @@ export interface Job {
   company: string;
   ratePerHour: number;
   tools: Array<string>;
-  disciplines: Array<string>;
+  disciplines: Array<Disciplines>;
   jobDesription: string;
-  jobType: string;
+  jobType: JobTypes;
   location: string;
 }
 
 export interface JobState {
-  items: Job[],
-  nextToken?: string,
+  items: Job[];
+  nextToken?: string;
 }
 
 export interface JobsState {
@@ -29,7 +46,7 @@ export interface JobsState {
 }
 
 export interface StatusState {
-  [key: string]: statusTypes 
+  [key: string]: statusTypes;
 }
 
 export interface AppState {
@@ -39,13 +56,13 @@ export interface AppState {
 
 export interface ListJobsItems {
   listJobs: {
-    items: Job[]
-    nextToken: string,
-  },
+    items: Job[];
+    nextToken: string;
+  };
 }
 
 export interface GetJobsItems {
-  getJobs: Job,
+  getJobs: Job;
 }
 
 export interface ListJobsGraphQL {
@@ -57,11 +74,11 @@ export interface GetJobsGraphQL {
 }
 
 export interface FetchJobsVariables {
-  limit?: number,
-  filter?: TableJobsFilterInput,
-  nextToken?: string,
-};
+  limit?: number;
+  filter?: TableJobsFilterInput;
+  nextToken?: string;
+}
 
 export interface GetJobVariables {
-  jobId: string,
-};
+  jobId: string;
+}
