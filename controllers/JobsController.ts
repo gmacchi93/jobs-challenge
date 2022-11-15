@@ -1,6 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
+import { createJobs } from "grapql/mutations";
 import { getJobs, listJobs } from "grapql/queries";
-import { FetchJobsVariables, GetJobsGraphQL, GetJobsItems, GetJobVariables, ListJobsGraphQL, ListJobsItems } from "types";
+import { FetchJobsVariables, GetJobsGraphQL, GetJobsItems, GetJobVariables, Job, ListJobsGraphQL, ListJobsItems } from "types";
 
 class JobsController {
 
@@ -17,6 +18,11 @@ class JobsController {
     ) as Promise<ListJobsGraphQL>);
     return result.data;
   };
+
+  createJob = async (job:Job) => {
+    const result = await (API.graphql(graphqlOperation(createJobs, job)))
+    return result;
+  }
 }
 
 export default new JobsController();

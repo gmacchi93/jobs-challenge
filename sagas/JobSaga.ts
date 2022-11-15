@@ -7,13 +7,14 @@ import {
   fetchLatestJobsRequest,
   fetchLatestJobsSuccess,
   fetchLatestJobsError,
+  createJobRequest,
+  createJobSuccess,
+  createJobError,
 } from "../actions";
-
 import {
   actionTypes,
+  CreateJobAction,
   FetchJobs,
-  FetchJobsVariables,
-  Job,
   ListJobsItems,
 } from "../types";
 
@@ -53,9 +54,20 @@ function* onFetchLatestJobs(action: FetchJobs) {
   }
 }
 
+function* onCreateJob({job}: CreateJobAction) {
+  try {
+    yield put(createJobRequest());
+    const data: ListJobsItems = yield call(JobsController.createJob, job);
+    yield put(createJobSuccess());
+  } catch (error: any) {
+    yield put(createJobError(error));
+  }
+}
+
 function* JobSaga() {
   yield takeLatest(actionTypes.FETCH_JOBS, onFetchJobs);
   yield takeLatest(actionTypes.FETCH_LATEST_JOBS, onFetchLatestJobs);
+  yield takeLatest(actionTypes.CREATE_JOB, onCreateJob);
 }
 
 export default JobSaga;

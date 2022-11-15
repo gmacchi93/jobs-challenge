@@ -27,6 +27,11 @@ export enum actionTypes {
     CREATE_JOB_ERROR = 'CREATE_JOB_ERROR',
 }
 
+export interface CreateJobAction {
+    type: actionTypes.CREATE_JOB,
+    job: Job
+}
+
 export interface FetchJobs {
     type: actionTypes.FETCH_JOBS | actionTypes.FETCH_LATEST_JOBS,
     filters?: any,
