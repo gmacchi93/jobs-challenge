@@ -6,8 +6,9 @@ import { useDispatch } from "react-redux";
 import { getLatestJobs } from "selectors/JobSelectors";
 import getStatus from "selectors/StatusSelectors";
 import { actionTypes, AppState } from "types";
-import JobOfferItem from "../common/JobOfferItem";
-import ListLoader from "../common/ListLoader";
+import ListLoader from "@/components/common/ListLoader";
+import JobOfferItem from "@/components/common/JobOfferItem";
+
 
 type Props = {};
 

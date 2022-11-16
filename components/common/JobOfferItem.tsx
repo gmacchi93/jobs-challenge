@@ -24,22 +24,24 @@ const JobOfferItem = ({
     <li>
       <article>
         <div className="flex flex-col rounded-md border border-neutral-300">
-          <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-2 md:gap-8 px-5 py-2">
+          <div className="flex flex-col sm:flex-row justify-start md:justify-between items-start md:items-center gap-2 md:gap-8 px-5 py-2">
             <div className="flex flex-col flex-1">
               <h3 className="text-xl font-semibold">{name}</h3>
               <p>{company}</p>
             </div>
-            <JobOfferIconAttribute
-              icon={faLocationPin}
-              ariaLabel="Location"
-              attribute={location}
-            />
-            <JobOfferIconAttribute
-              icon={faDollar}
-              ariaLabel="Rate per hour"
-              attribute={`${ratePerHour}/hr`}
-            />
-            <Badge>{jobType}</Badge>
+            <div className="flex flex-col lg:gap-8 lg:flex-row justify-start md:justify-between items-start md:items-center gap-2 px-5 py-2">
+              <JobOfferIconAttribute
+                icon={faLocationPin}
+                ariaLabel="Location"
+                attribute={location}
+              />
+              <JobOfferIconAttribute
+                icon={faDollar}
+                ariaLabel="Rate per hour"
+                attribute={`${ratePerHour}/hr`}
+              />
+              <Badge>{jobType}</Badge>
+            </div>
           </div>
           <div className="px-5 py-2 bg-neutral-100">
             <div className="flex flex-row gap-8 items-center">

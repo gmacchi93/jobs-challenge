@@ -92,3 +92,75 @@ export const onDeleteJobs = /* GraphQL */ `
     }
   }
 `;
+export const onCreateMyCustomType = /* GraphQL */ `
+  subscription OnCreateMyCustomType(
+    $id: ID
+    $firstName: String
+    $lastName: String
+    $email: String
+    $linkedInUrl: String
+  ) {
+    onCreateMyCustomType(
+      id: $id
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      linkedInUrl: $linkedInUrl
+    ) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;
+export const onUpdateMyCustomType = /* GraphQL */ `
+  subscription OnUpdateMyCustomType(
+    $id: ID
+    $firstName: String
+    $lastName: String
+    $email: String
+    $linkedInUrl: String
+  ) {
+    onUpdateMyCustomType(
+      id: $id
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      linkedInUrl: $linkedInUrl
+    ) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;
+export const onDeleteMyCustomType = /* GraphQL */ `
+  subscription OnDeleteMyCustomType(
+    $id: ID
+    $firstName: String
+    $lastName: String
+    $email: String
+    $linkedInUrl: String
+  ) {
+    onDeleteMyCustomType(
+      id: $id
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      linkedInUrl: $linkedInUrl
+    ) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;

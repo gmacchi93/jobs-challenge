@@ -1,12 +1,17 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import FormGroup from "../common/FormGroup";
 import SubmitButton from "../common/SubmitButton";
 import * as Yup from "yup";
-import { Disciplines, JobField, JobTypes } from "@/types/data";
+import { AppState, Disciplines, Job, JobField, JobTypes } from "@/types/data";
 import RadioGroup from "../common/RadioGroup";
 import CheckboxGroup from "../common/CheckboxGroup";
 import MultipleTextInput from "../common/MultipleTextInput";
+import { useDispatch, useSelector } from "react-redux";
+import getStatus from "selectors/StatusSelectors";
+import { actionTypes } from "@/types/actions";
+import { createJob } from "actions";
+import * as uuid from 'uuid';
 
 type Props = {};
 
@@ -27,11 +32,17 @@ const JOB_DISCIPLINES_OPTIONS = [
 ];
 
 const JobOfferForm = (props: Props) => {
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, isSuccess } = useSelector((state: AppState) =>
+    getStatus(state, actionTypes.CREATE_JOB)
+  );
+
   const JobSchema = Yup.object().shape({
-    job: Yup.string().min(3, "Too Short!").required("Required"),
-    jobDescription: Yup.string().min(2, "Too Short!").required("Required"),
-    name: Yup.string().required("Required!"),
-    offerEndDate: Yup.date().min(new Date(), "The date must be greater than today!").required("Required!"),
+    name: Yup.string().min(3, "Too Short!").required("Required"),
+    offerEndDate: Yup.date()
+      .min(new Date(), "The date must be greater than today!")
+      .required("Required!"),
     company: Yup.string().required("Required!"),
     ratePerHour: Yup.string().required("Required!"),
     tools: Yup.mixed<string[]>().required("Required!"),
@@ -40,34 +51,45 @@ const JobOfferForm = (props: Props) => {
     jobType: Yup.mixed<JobTypes>().required("Required!"),
     location: Yup.string().required("Required!"),
   });
+
   const formik = useFormik({
     initialValues: {
-      jobId: "",
-      offerStartDate: "",
+      jobId: uuid.v4(),
+      offerStartDate: new Date().toISOString(),
       name: "",
       offerEndDate: "",
-      active: "",
+      active: true,
       company: "",
-      ratePerHour: "",
+      ratePerHour: 0,
       tools: [],
       disciplines: [],
       jobDesription: "",
-      jobType: "",
+      jobType: JobTypes.ONSITE,
       location: "",
     },
     validationSchema: JobSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values:Job) => {
+      dispatch(createJob({ 
+        ...values, 
+        offerEndDate: new Date(values.offerEndDate).toISOString(),
+        offerStartDate: new Date().toISOString(),
+      }));
     },
   });
-  console.log(formik.values);
 
   const getError = (name: JobField) => {
     return formik.touched[name] ? formik.errors[name] : undefined;
   };
 
+  useEffect(() => {
+    if(isSuccess){
+      formik.resetForm();
+    }
+  }, [isSuccess]);
+  
+
   return (
-    <form className="max-w-xl mx-auto flex flex-col gap-4 py-5">
+    <form className="max-w-xl mx-auto flex flex-col gap-4 py-5" onSubmit={formik.handleSubmit}>
       <FormGroup
         required
         name="name"
@@ -160,7 +182,19 @@ const JobOfferForm = (props: Props) => {
         value={formik.values["location"]}
         error={getError("location")}
       />
-      <SubmitButton value="Submit" className="w-full mt-5" />
+      <SubmitButton
+        disabled={isLoading}
+        value="Submit"
+        className="w-full mt-5"
+      />
+      {isSuccess && (
+        <p className="text-green-500 font-semibold">Job created successfuly!</p>
+      )}
+      {isError && (
+        <p className="text-red-500 font-semibold">
+          Something went wrong. Please, try again
+        </p>
+      )}
     </form>
   );
 };

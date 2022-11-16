@@ -45,7 +45,6 @@ export const listJobs = /* GraphQL */ `
     }
   }
 `;
-
 export const listJobIds = /* GraphQL */ `
   query ListJobs(
     $filter: TableJobsFilterInput
@@ -55,6 +54,37 @@ export const listJobIds = /* GraphQL */ `
     listJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         jobId
+      }
+      nextToken
+    }
+  }
+`;
+export const getMyCustomType = /* GraphQL */ `
+  query GetMyCustomType($id: ID!) {
+    getMyCustomType(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;
+export const listMyCustomTypes = /* GraphQL */ `
+  query ListMyCustomTypes(
+    $filter: TableMyCustomTypeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMyCustomTypes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        firstName
+        lastName
+        email
+        linkedInUrl
+        job
       }
       nextToken
     }

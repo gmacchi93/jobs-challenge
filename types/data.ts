@@ -18,7 +18,19 @@ export enum Disciplines {
   UXUI_DESIGN = "UXUI Design",
 }
 
-export type JobField = 'jobId' | 'offerStartDate' | 'name' | 'offerEndDate' | 'active' | 'company' | 'ratePerHour' | 'tools' | 'disciplines' | 'jobDesription' | 'jobType' | 'location';
+export type JobField =
+  | "jobId"
+  | "offerStartDate"
+  | "name"
+  | "offerEndDate"
+  | "active"
+  | "company"
+  | "ratePerHour"
+  | "tools"
+  | "disciplines"
+  | "jobDesription"
+  | "jobType"
+  | "location";
 
 export interface Job {
   jobId: string;
@@ -35,6 +47,24 @@ export interface Job {
   location: string;
 }
 
+export interface ApplicationGraphQL {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  linkedInUrl: string;
+  job: string;
+}
+
+export interface Application {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  linkedInUrl: string;
+  job: Job;
+}
+
 export interface JobState {
   items: Job[];
   nextToken?: string;
@@ -45,6 +75,15 @@ export interface JobsState {
   resultsJobs: JobState;
 }
 
+export interface ApplicationState {
+  items: Application[];
+  nextToken?: string;
+}
+
+export interface ApplicationsState {
+  applications: ApplicationState;
+}
+
 export interface StatusState {
   [key: string]: statusTypes;
 }
@@ -52,11 +91,19 @@ export interface StatusState {
 export interface AppState {
   jobs: JobsState;
   status: StatusState;
+  applications: ApplicationsState;
 }
 
 export interface ListJobsItems {
   listJobs: {
     items: Job[];
+    nextToken: string;
+  };
+}
+
+export interface ListApplicationItems {
+  listMyCustomTypes: {
+    items: ApplicationGraphQL[];
     nextToken: string;
   };
 }
@@ -67,6 +114,10 @@ export interface GetJobsItems {
 
 export interface ListJobsGraphQL {
   data: ListJobsItems;
+}
+
+export interface ListApplicationsGraphQL {
+  data: ListApplicationItems;
 }
 
 export interface GetJobsGraphQL {

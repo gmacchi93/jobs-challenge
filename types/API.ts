@@ -52,6 +52,38 @@ export type DeleteJobsInput = {
   jobId: string,
 };
 
+export type CreateMyCustomTypeInput = {
+  id: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  linkedInUrl: string,
+  job: string,
+};
+
+export type MyCustomType = {
+  __typename: "MyCustomType",
+  id: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  linkedInUrl: string,
+  job: string,
+};
+
+export type UpdateMyCustomTypeInput = {
+  id: string,
+  firstName?: string | null,
+  lastName?: string | null,
+  email?: string | null,
+  linkedInUrl?: string | null,
+  job?: string | null,
+};
+
+export type DeleteMyCustomTypeInput = {
+  id: string,
+};
+
 export type TableJobsFilterInput = {
   jobId?: TableStringFilterInput | null,
   offerStartDate?: TableStringFilterInput | null,
@@ -100,6 +132,33 @@ export type TableFloatFilterInput = {
 export type JobsConnection = {
   __typename: "JobsConnection",
   items?:  Array<Jobs | null > | null,
+  nextToken?: string | null,
+};
+
+export type TableMyCustomTypeFilterInput = {
+  id?: TableIDFilterInput | null,
+  firstName?: TableStringFilterInput | null,
+  lastName?: TableStringFilterInput | null,
+  email?: TableStringFilterInput | null,
+  linkedInUrl?: TableStringFilterInput | null,
+};
+
+export type TableIDFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+};
+
+export type MyCustomTypeConnection = {
+  __typename: "MyCustomTypeConnection",
+  items?:  Array<MyCustomType | null > | null,
   nextToken?: string | null,
 };
 
@@ -169,6 +228,54 @@ export type DeleteJobsMutation = {
   } | null,
 };
 
+export type CreateMyCustomTypeMutationVariables = {
+  input: CreateMyCustomTypeInput,
+};
+
+export type CreateMyCustomTypeMutation = {
+  createMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
+export type UpdateMyCustomTypeMutationVariables = {
+  input: UpdateMyCustomTypeInput,
+};
+
+export type UpdateMyCustomTypeMutation = {
+  updateMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
+export type DeleteMyCustomTypeMutationVariables = {
+  input: DeleteMyCustomTypeInput,
+};
+
+export type DeleteMyCustomTypeMutation = {
+  deleteMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
 export type GetJobsQueryVariables = {
   jobId: string,
 };
@@ -214,6 +321,44 @@ export type ListJobsQuery = {
       jobDesription: string,
       jobType: string,
       location: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetMyCustomTypeQueryVariables = {
+  id: string,
+};
+
+export type GetMyCustomTypeQuery = {
+  getMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
+export type ListMyCustomTypesQueryVariables = {
+  filter?: TableMyCustomTypeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListMyCustomTypesQuery = {
+  listMyCustomTypes?:  {
+    __typename: "MyCustomTypeConnection",
+    items?:  Array< {
+      __typename: "MyCustomType",
+      id: string,
+      firstName: string,
+      lastName: string,
+      email: string,
+      linkedInUrl: string,
+      job: string,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -294,5 +439,65 @@ export type OnDeleteJobsSubscription = {
     jobDesription: string,
     jobType: string,
     location: string,
+  } | null,
+};
+
+export type OnCreateMyCustomTypeSubscriptionVariables = {
+  id?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  email?: string | null,
+  linkedInUrl?: string | null,
+};
+
+export type OnCreateMyCustomTypeSubscription = {
+  onCreateMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
+export type OnUpdateMyCustomTypeSubscriptionVariables = {
+  id?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  email?: string | null,
+  linkedInUrl?: string | null,
+};
+
+export type OnUpdateMyCustomTypeSubscription = {
+  onUpdateMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
+  } | null,
+};
+
+export type OnDeleteMyCustomTypeSubscriptionVariables = {
+  id?: string | null,
+  firstName?: string | null,
+  lastName?: string | null,
+  email?: string | null,
+  linkedInUrl?: string | null,
+};
+
+export type OnDeleteMyCustomTypeSubscription = {
+  onDeleteMyCustomType?:  {
+    __typename: "MyCustomType",
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    linkedInUrl: string,
+    job: string,
   } | null,
 };

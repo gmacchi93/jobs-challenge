@@ -56,3 +56,39 @@ export const deleteJobs = /* GraphQL */ `
     }
   }
 `;
+export const createMyCustomType = /* GraphQL */ `
+  mutation CreateMyCustomType($input: CreateMyCustomTypeInput!) {
+    createMyCustomType(input: $input) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;
+export const updateMyCustomType = /* GraphQL */ `
+  mutation UpdateMyCustomType($input: UpdateMyCustomTypeInput!) {
+    updateMyCustomType(input: $input) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;
+export const deleteMyCustomType = /* GraphQL */ `
+  mutation DeleteMyCustomType($input: DeleteMyCustomTypeInput!) {
+    deleteMyCustomType(input: $input) {
+      id
+      firstName
+      lastName
+      email
+      linkedInUrl
+      job
+    }
+  }
+`;

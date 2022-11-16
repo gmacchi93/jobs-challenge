@@ -21,6 +21,7 @@ import {
 function* onFetchJobs(action: FetchJobs) {
   const { filters } = action;
   const variables = {
+    limit: 1000,
     filter: {
       active: { eq: true },
       ...(filters.name && { name: { contains: filters.name } }),
@@ -57,7 +58,7 @@ function* onFetchLatestJobs(action: FetchJobs) {
 function* onCreateJob({job}: CreateJobAction) {
   try {
     yield put(createJobRequest());
-    const data: ListJobsItems = yield call(JobsController.createJob, job);
+    const data: ListJobsItems = yield call(JobsController.createJob, {input: job});
     yield put(createJobSuccess());
   } catch (error: any) {
     yield put(createJobError(error));

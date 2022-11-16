@@ -1,3 +1,4 @@
+import { CreateJobsMutationVariables } from "@/types/API";
 import { API, graphqlOperation } from "aws-amplify";
 import { createJobs } from "grapql/mutations";
 import { getJobs, listJobs } from "grapql/queries";
@@ -19,7 +20,7 @@ class JobsController {
     return result.data;
   };
 
-  createJob = async (job:Job) => {
+  createJob = async (job:CreateJobsMutationVariables) => {
     const result = await (API.graphql(graphqlOperation(createJobs, job)))
     return result;
   }

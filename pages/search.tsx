@@ -21,7 +21,8 @@ import ListLoader from "@/components/common/ListLoader";
 const SearchPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log(router);
+  const [isOpened, setIsOpened] = useState(false);
+
   const {
     query: { q = "" },
   } = router;
@@ -29,6 +30,10 @@ const SearchPage = () => {
   const { isLoading, isSuccess } = useSelector((state: AppState) =>
     getStatus(state, actionTypes.FETCH_JOBS)
   );
+
+  const toggleDropdown = () => {
+    setIsOpened((prev) => !prev);
+  };
 
   const [filters, setFilters] = useState({
     name: q,
@@ -56,7 +61,7 @@ const SearchPage = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col-reverse md:flex-row gap-4 pb-20 p-5 md:px-0">
+      <div className="flex flex-col-reverse sm:flex-row gap-4 pb-20 p-5 lg:px-0">
         <div className="flex-1">
           <main>
             <h2 className="text-3xl">Search results</h2>
@@ -68,7 +73,7 @@ const SearchPage = () => {
                   ))}
                 </ul>
               )}
-              {(isSuccess && !jobs.items.length) && (
+              {isSuccess && !jobs.items.length && (
                 <p className="py-10 text-center">
                   Sorry, we can&apos;t find anything with those filters.
                   <br /> Please, try again with another combination of filters.
@@ -78,10 +83,41 @@ const SearchPage = () => {
             </div>
           </main>
         </div>
-        <div className="md:w-3/12">
+        <div className="w-full sm:w-4/12 lg:w-3/12 mt-11">
           <aside className="bg-neutral-100 rounded-md px-5 py-2">
-            <h2 className="text-2xl">Filters</h2>
-            <FilterForm filters={filters} onChange={handleChange} />
+            <div className="flex flex-row justify-between">
+              <h2 className="text-2xl">Filters</h2>
+              <button
+                type="button"
+                aria-controls="filter-form"
+                className="px-2 sm:hidden"
+                onClick={toggleDropdown}
+                aria-expanded={isOpened}
+              >
+                <div>
+                  <svg
+                    className={`transition-all${
+                      isOpened ? " transform rotate-180" : ""
+                    }`}
+                    width="11"
+                    height="7"
+                    viewBox="0 0 11 7"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M5.25 7L6.11959e-07 -9.17939e-07L10.5 0L5.25 7Z"
+                      fill="#333333"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div id="filter-form" className={`${isOpened ? "block " : "hidden"} sm:block transition-transform`}>
+              <FilterForm filters={filters} onChange={handleChange} />
+            </div>
           </aside>
         </div>
       </div>
